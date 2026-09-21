@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "protocol": "MINIMINERS/0.3",
+  "pools": [
+    {
+      "name": "Mini Miners Pool 1",
+      "host": "144.202.27.176",
+      "port": 2811,
+      "priority": 1,
+      "enabled": true
+    }
+  ]
+}
