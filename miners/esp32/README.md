@@ -37,16 +37,85 @@ It does not include:
 
 These features are not required to participate in MINI mining.
 
-## Supported Hardware
+## Tested Hardware
 
-The current reference source contains board profiles for:
+The public MINI ESP32 reference miner has been successfully compiled, flashed and used to mine on the MINI Closed Testnet on:
 
 - ESP32 DevKit-style boards
 - NodeMCU-32S-style ESP32 boards
+- **ESP32-C3 Super Mini**
 
-Other ESP32 boards may work with minor configuration changes.
+### ESP32-C3 Super Mini
 
-MINI welcomes ports to additional hardware.
+The ESP32-C3 Super Mini has been physically tested with the public reference miner using:
+
+```text
+Board: ESP32C3 Dev Module
+Arduino ESP32 core: 3.3.11
+USB CDC On Boot: Enabled
+```
+
+Four ESP32-C3 Super Mini devices have been successfully brought online during development testing.
+
+Initial observed mining performance was approximately:
+
+```text
+12.63–12.65 MiniPOW/s
+```
+
+For comparison, the established standard ESP32 test fleet was simultaneously operating at approximately:
+
+```text
+6.93–6.94 MiniPOW/s
+```
+
+These are real-world Closed Testnet observations, not guaranteed performance specifications.
+
+Performance can vary with hardware, compiler version, configuration, firmware changes and operating conditions.
+
+The ESP32-C3 results are particularly interesting because the C3 is a single-core RISC-V device and is running the same MiniPOW1 algorithm used by the other reference miners.
+
+### ESP32-C3 Flashing Note
+
+When using the ESP32-C3 Super Mini with its native USB connection, serial output may require:
+
+```text
+Tools → USB CDC On Boot → Enabled
+```
+
+The Serial Monitor is currently configured for:
+
+```text
+115200 baud
+```
+
+If the C3 repeatedly connects and disconnects before flashing, manually entering its bootloader/download mode may be necessary.
+
+Other ESP32-family boards may also work, but they should not be considered tested until they have been successfully compiled, flashed, connected and observed mining on the Closed Testnet.
+
+## Real-World Testing
+
+MINI publishes real-world hardware measurements as testing progresses.
+
+Current testing includes:
+
+- MiniPOW/s
+- Adaptive difficulty behavior
+- Device temperature
+- USB power consumption
+- Energy consumption over time
+- MiniPOW/s per watt
+- Long-duration stability
+
+Preliminary testing has shown highly repeatable MiniPOW performance within each currently tested hardware class.
+
+More precise power measurements are underway using dedicated inline USB measurement equipment.
+
+Power and efficiency results will be published as measurements are validated.
+
+Technical power/testing page:
+
+https://miniminers.net/power.html
 
 ## Arduino Environment
 
