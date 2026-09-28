@@ -1907,6 +1907,36 @@ bool mineOneJob() {
 
 
 
+// Keep the BOOT/setup button responsive during normal mining.
+void serviceSetupButton() {
+    if (setupMode) return;
+
+    if (digitalRead(SETUP_BOOT_PIN) == LOW) {
+        delay(25);  // debounce
+        if (digitalRead(SETUP_BOOT_PIN) == LOW) {
+            Serial.println("BOOT pressed: entering setup mode.");
+            startSetupMode();
+        }
+    }
+}
+
+// Replacement for long blocking retry delays.
+// This keeps both the setup button and status LED responsive while waiting.
+bool waitWithSetupButton(unsigned long waitMs) {
+    unsigned long started = millis();
+
+    while (millis() - started < waitMs) {
+        serviceSetupButton();
+        serviceStatusLed();
+
+        if (setupMode) return false;
+
+        delay(20);
+    }
+
+    return true;
+}
+
 void setup() {
     pinMode(STATUS_LED_PIN, OUTPUT);
     writeStatusLed(false);
