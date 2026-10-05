@@ -3,8 +3,8 @@
   "protocol": "MINIMINERS/0.3",
   "pools": [
     {
-      "name": "Mini Miners Pool 1",
-      "host": "144.202.27.176",
+      "name": "Mini Miners Official Pool #1",
+      "host": "64.177.14.113",
       "port": 2811,
       "priority": 1,
       "enabled": true
